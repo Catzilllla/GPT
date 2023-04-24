@@ -22,7 +22,7 @@ def wake_up(update, context):
 
     context.bot.send_message(
         chat_id=chat.id,
-        text='Привет, {}. Посмотри, какого котика я тебе нашёл'.format(name),
+        text="Привет, {}. Посмотри, какого котика я тебе нашёл'.format(name)",
         reply_markup=button
     )
 
@@ -33,7 +33,8 @@ def main():
     updater.dispatcher.add_handler(CommandHandler('newcat', new_cat))
 
     updater.start_polling()
-    updater.idle() 
+    updater.idle()
+
 
 if __name__ == '__main__':
     main()

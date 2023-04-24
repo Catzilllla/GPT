@@ -1,3 +1,6 @@
+#ignore catalog Other/
+Other/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
