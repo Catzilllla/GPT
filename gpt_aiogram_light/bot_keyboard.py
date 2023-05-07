@@ -6,7 +6,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 start_keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
 st_kb_1 = KeyboardButton(text='/help')
 st_kb_2 = KeyboardButton(text='/start')
-st_kb_3 = KeyboardButton(text='/')
+st_kb_3 = KeyboardButton(text='/settings')
 st_kb_4 = KeyboardButton(text='/help')
 start_keyboard.add(st_kb_1, st_kb_2)
 

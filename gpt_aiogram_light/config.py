@@ -3,6 +3,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram import Bot, Dispatcher
 
 
+OPEN_AI_KEY = "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"
 API_TOKEN = '6059784930:AAFaon_GMywQYkdUwkT_-wyTQb7VKOyeW4s'
 API_YA_DECORER = '64feacff-f35e-49f9-b40b-c66fbea09922'
 HELP_COMMANDS = """

@@ -1,9 +1,21 @@
-from config import HELP_COMMANDS, hello_list
+import openai as ai
+from config import HELP_COMMANDS, hello_list, OPEN_AI_KEY
 from config import fun_startup
 from config import disp_bot
 from aiogram import executor, types
 from aiogram.dispatcher import FSMContext
+from aiogram.dispatcher.filters import Text
 from bot_keyboard import start_keyboard
+
+ai.api_key = OPEN_AI_KEY
+messages  = [
+    {"role": "system", "content": "You are a programming assistant at Proghunter.ru, helping users with Python and JavaScript programming with popular frameworks."},
+]
+
+
+def update(messages, role, content):
+    messages.append({"role": role, "content": content})
+    return messages
 
 
 @disp_bot.message_handler(commands=['help'])
@@ -23,6 +35,27 @@ async def start_mess(message: types.Message) -> None:
                          reply_markup=start_keyboard, parse_mode='HTML')
     await message.delete()
 
+
+    # задумка, чтобы писать какую-либо фразу перед ответом о том, что как будето АИ размышляет
+    # phrasa_response = generate_response("короткое высказываение мыслителя, в стиле - я думаю, что это будет примерно так")
+    # нужно считать сколько символом ответ и если больше 100 символов, то спрашивать выводить ответ или нет
+@disp_bot.message_handler()
+async def any_message_from_user(message: types.Message) -> None:
+    update(messages, "user", message.text)
+    
+    response = ai.ChatCompletion.create(
+        model="gpt-3.5-turbo",  # Новая модель с контекстом
+        messages=messages,   # База данных на основе словаря
+    )
+    resolutipn_response = response['choices'][0]['message']['content'] + "\n" + str(len(response))
+
+    await message.answer(resolutipn_response, parse_mode="markdown")
+    
+    print("generate_response_text")
+    completions = ai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=message.text
+    )
 
 
 if __name__ == "__main__":
