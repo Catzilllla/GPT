@@ -1,11 +1,13 @@
 import openai as ai
 from config import HELP_COMMANDS, hello_list, OPEN_AI_KEY
 from config import fun_startup
-from config import disp_bot
+from config import disp_bot, init_bot
 from aiogram import executor, types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
+from aiogram.types import ContentType, File
 from bot_keyboard import start_keyboard
+from pathlib import Path
 
 ai.api_key = OPEN_AI_KEY
 messages  = [
@@ -34,6 +36,20 @@ async def start_mess(message: types.Message) -> None:
                          ),
                          reply_markup=start_keyboard, parse_mode='HTML')
     await message.delete()
+
+# ПРИЁМ АУДИО
+async def handle_file(file: File, file_name: str, path: str):
+    Path(f"{path}").mkdir(parents=True, exist_ok=True)
+
+    await init_bot.download_file(file_path=file.file_path, destination=f"{path}/{file_name}")
+
+
+@disp_bot.message_handler(content_types=[ContentType.VOICE])
+async def any_message_from_user(message: types.Message) -> None:
+    voice = await message.voice.get_file()
+    path = "files/voices/"
+
+    await handle_file(file=voice, file_name=f"{voice.file_id}.ogg", path=path)
 
 
     # задумка, чтобы писать какую-либо фразу перед ответом о том, что как будето АИ размышляет
