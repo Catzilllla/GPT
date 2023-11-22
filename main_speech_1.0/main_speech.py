@@ -7,7 +7,7 @@ import pyaudio
 
 
 # устанавливаем API-ключ OpenAI
-ai.api_key = "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"
+ai.api_key = ""
 
 engine = pyttsx3.init()
 

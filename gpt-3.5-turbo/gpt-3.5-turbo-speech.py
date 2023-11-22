@@ -7,7 +7,7 @@ import pyttsx3
 from gtts import gTTS
 from playsound import playsound
 
-ai.api_key = "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"
+ai.api_key = ""
 
 language = 'ru'
 

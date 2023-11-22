@@ -8,7 +8,7 @@ import pyaudio
 import os
 os.environ['SDL_AUDIODRIVER'] = 'dsp'
 
-ai.api_key = "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"
+ai.api_key = ""
 recognizer = rc.Recognizer()
 engine = pyttsx3.init()
 

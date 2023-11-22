@@ -9,7 +9,7 @@ import pyaudio
 
 # recognizer = rc.Recognizer()
 # engine = pyttsx3.init()
-ai.api_key = "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"
+ai.api_key = ""
 
 # def audio_to_text(filename):
     

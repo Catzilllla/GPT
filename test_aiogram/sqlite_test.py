@@ -4,7 +4,7 @@ import sqlite3 as sqdb
 
 
 
-TOKEN_API = '6059784930:AAFaon_GMywQYkdUwkT_-wyTQb7VKOyeW4s'
+TOKEN_API = ''
 init_bot = Bot(token=TOKEN_API)
 disp_bot = Dispatcher(init_bot)
 HELP_COMMANDS = """

@@ -2,7 +2,7 @@ import requests
 from telegram import ReplyKeyboardMarkup
 from telegram.ext import CommandHandler, Filters, MessageHandler, Updater
 
-updater = Updater(token='5306488432:AAHSUp-jzHTOGqbv9NOlsJfLfelCY8dbrdE')
+updater = Updater(token='')
 URL = 'https://api.thecatapi.com/v1/images/search'
 
 def get_new_image():

@@ -2,7 +2,7 @@ from telebot import TeleBot
 from telebot import types
 import requests
 
-bot = TeleBot("5306488432:AAHSUp-jzHTOGqbv9NOlsJfLfelCY8dbrdE")
+bot = TeleBot("")
 current_shown_dates = {}
 
 URL_CAT = 'https://api.thecatapi.com/v1/images/search'
